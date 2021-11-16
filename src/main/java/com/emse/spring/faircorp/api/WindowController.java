@@ -12,6 +12,7 @@ import com.emse.spring.faircorp.model.WindowStatus;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,17 +69,17 @@ public class WindowController{
         return windowDao.findWindowsByRoom(id).stream().map(WindowDto::new).collect(Collectors.toList());
     }
     
-    @Deprecated
-    @ApiOperation(value = "Creating a new window")
-    @PostMapping
-    public ResponseEntity create (@RequestBody WindowDto windowDto){
-        Room room = roomDao.findById(windowDto.getRoomId().orElse(null));
-        if(room == null){return new ResponseEntity("404 - Not Found", HttpStatus.NOT_FOUND);}
-        Window window = null;
-        if(windowDto.getId() == null){window = windowDao.save(new Window(room, windowDto.getName(), windowDto.getWindowStatus()));}
-        else{window = windowDao.getOne(windowDto.getId());
-        window.setWindowStatus(windowDto.getWindowStatus());}
-    }
+    // @Deprecated
+    // @ApiOperation(value = "Creating a new window")
+    // @PostMapping
+    // public ResponseEntity create (@RequestBody WindowDto windowDto){
+    //     Room room = roomDao.findById(windowDto.getRoomId().orElse(null));
+    //     if(room == null){return new ResponseEntity("404 - Not Found", HttpStatus.NOT_FOUND);}
+    //     Window window = null;
+    //     if(windowDto.getId() == null){window = windowDao.save(new Window(room, windowDto.getName(), windowDto.getWindowStatus()));}
+    //     else{window = windowDao.getOne(windowDto.getId());
+    //     window.setWindowStatus(windowDto.getWindowStatus());}
+    // }
 
     @ApiOperation(value = "Deleting a window")
     @DeleteMapping(path = "/{id}")

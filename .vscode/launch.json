@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-FaircorpApplication<faircorp>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.emse.spring.faircorp.FaircorpApplication",
+            "projectName": "faircorp",
+            "args": ""
+        }
+    ]
+}
